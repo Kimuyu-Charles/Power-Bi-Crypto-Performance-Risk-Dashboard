@@ -3,8 +3,11 @@
 Power BI dashboard for exploring the **top 1000 cryptocurrencies** across market structure, performance, volatility, liquidity, and tokenomics (supply utilization & Volume/MarketCap).
 
 The report is built as a 2-page interactive dashboard:
-Page 1 – Crypto Market Overview**
-Page 2 – Performance & Risk Explorer**
+
+- **Page 1 – Crypto Market Overview**
+- **Page 2 – Performance & Risk Explorer**
+
+---
 
 ## 1. Project Overview
 
@@ -16,6 +19,8 @@ It helps you answer questions like:
 - How concentrated is the market in the **top 10 coins**?
 - Which coins are **most volatile**, **most illiquid**, or **most “wrecked” vs ATH**?
 - Which projects have **extreme tokenomics** (very low or very high circulating supply)?
+
+---
 
 ## 2. Dataset
 
@@ -29,7 +34,9 @@ Files:
   - `circulating_supply`, `total_supply`, `max_supply`
 - `Crypto.pbix` – Power BI report built on top of the dataset.
 
-> (https://www.kaggle.com/datasets/mihikaajayjadhav/top-1000-cryptocurrencies-real-time-data-2025)
+> Source: https://www.kaggle.com/datasets/mihikaajayjadhav/top-1000-cryptocurrencies-real-time-data-2025
+
+---
 
 ## 3. Dashboard Pages
 
@@ -52,9 +59,11 @@ High-level view of market structure and liquidity.
 **Middle row**
 
 - **Market Cap Distribution by Tier**  
-  Column chart showing **sum of market_cap** by `Market Cap Tier`.
+  Column chart showing **sum of `market_cap`** by `Market Cap Tier`.
+
 - **Market Cap Share – Top 10 vs Others**  
   Donut / pie chart splitting market cap into **Top 10** and **Others**.
+
 - **Market Cap vs Volume**  
   Bubble / scatter chart:
   - X: `market_cap`
@@ -75,15 +84,17 @@ Shows coin-level details with conditional formatting:
 
 Color scales and icons highlight winners/losers, deep drawdowns, and supply utilisation.
 
+---
+
 ### 3.2 Page 2 – Performance & Risk Explorer
 
 Deep dive into performance, volatility, and tokenomics.
 
 **Top row**
 
-- **Performance Heatmap** (Matrix)  
-  - Rows: `crypto_name`
-  - Columns: timeframes `1h`, `24h`, `7d`, `30d`, `1y`
+- **Performance Heatmap (Matrix)**  
+  - Rows: `crypto_name`  
+  - Columns: timeframes `1h`, `24h`, `7d`, `30d`, `1y`  
   - Values: performance measure returning the appropriate `% change`  
   - Red–green color scale centered at 0%.
 
@@ -96,15 +107,17 @@ Deep dive into performance, volatility, and tokenomics.
 
 - **Tokenomics & Liquidity by Market Cap Tier**  
   Clustered/stacked bar:
-  - `Avg Supply Utilization` (circulating vs max/total supply)
-  - `Avg Volume to MarketCap` (24h volume ÷ market cap)
+  - Avg **Supply Utilization** (circulating vs max/total supply)
+  - Avg **Volume to MarketCap** (24h volume ÷ market cap)
 
 - **Extreme Tokenomics table**  
   Table filtered to coins where `supply_utilization` is:
-  - **≥ 90%** (almost fully released) or
+  - **≥ 90%** (almost fully released), or
   - **≤ 20%** (heavily locked / future dilution risk)
 
-Shows `market_cap_rank`, `name`, `symbol`, `Market Cap Tier`, `market_cap`, `Volume to MarketCap`, `supply_utilization`, `Range 24h %`, `Drawdown from ATH %`, etc.
+  Shows `market_cap_rank`, `name`, `symbol`, `Market Cap Tier`, `market_cap`, `Volume to MarketCap`, `supply_utilization`, `Range 24h %`, `Drawdown from ATH %`, etc.
+
+---
 
 ## 4. Key Measures & Calculations (examples)
 
@@ -120,11 +133,17 @@ DIVIDE (
 
 -- Volume to MarketCap ratio
 Volume to MarketCap :=
-DIVIDE ( SUM ( 'Crypto'[total_volume] ), SUM ( 'Crypto'[market_cap] ) )
+DIVIDE (
+    SUM ( 'Crypto'[total_volume] ),
+    SUM ( 'Crypto'[market_cap] )
+)
 
 -- Supply utilisation (0–100%)
 Supply Utilization :=
-DIVIDE ( 'Crypto'[circulating_supply], 'Crypto'[max_supply] )
+DIVIDE (
+    'Crypto'[circulating_supply],
+    'Crypto'[max_supply]
+)
 
 -- Drawdown from ATH (% below all-time high)
 Drawdown from ATH % :=
