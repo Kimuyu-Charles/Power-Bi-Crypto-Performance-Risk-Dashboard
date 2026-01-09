@@ -44,6 +44,8 @@ Files:
 
 High-level view of market structure and liquidity.
 
+![Crypto Market Overview](images/crypto_market_overview.png)
+
 **Top row (KPIs & filters)**
 
 - Slicers:
@@ -90,6 +92,8 @@ Color scales and icons highlight winners/losers, deep drawdowns, and supply util
 
 Deep dive into performance, volatility, and tokenomics.
 
+![Crypto Performance & Risk Explorer](images/crypto_performance_risk.png)
+
 **Top row**
 
 - **Performance Heatmap (Matrix)**  
@@ -105,7 +109,9 @@ Deep dive into performance, volatility, and tokenomics.
 
 **Bottom row**
 
-- **Tokenomics & Liquidity by Market Cap Tier**  
+- **Tokenomics & Liquidity by Market Cap Tier**
+![Tokenomics and Liquidity by Market Cap Tier](images/crypto_tokenomics_liquidity.png)
+
   Clustered/stacked bar:
   - Avg **Supply Utilization** (circulating vs max/total supply)
   - Avg **Volume to MarketCap** (24h volume ÷ market cap)
